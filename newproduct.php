@@ -64,51 +64,47 @@
         </div>
     </nav>
     <div class="container">
-                    <div class="jumbotron">
-                        <h1>Ford Shop</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem quis nemo iure architecto libero doloremque nisi nulla, tempore non necessitatibus.</p>
+        <div class="row">
+            <form action="saveproduct.php" class="form-horizontal" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="name" class="control-label col-md-3">Name: </label>
+                        <div class="col-md-9">
+                            <input type="text" name="txtName" class="form-control">
+                        </div>
                     </div>
-    </div>
-    <div class="container">
-           <div class = "row">
-           <?php
-                $sql = "SELECT * FROM product ORDER BY id";
-                $result = $conn->query($sql);
-                if(!$result){
-                    echo "Error during data retrieval";
-
-                }
-                else{
-                    while($prd=$result->fetch_object()){
-                ?>
-                <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                <div class="thumbnail">
-                <a href="productdetail.php?pid=<?php echo $prd->id;?>">
-                    <img src="pic-product/<?php echo $prd->picture?>" alt="">
-                    </a>
-                    <div class="caption">
-                        <h3><?php echo $prd->name?></h3>
-                        <p><?php echo $prd->description?></p>
-                        <p>
-                        <strong>Price: <?php echo $prd->price?>
-                        </strong>
-                        </p>
-                         <p>
-                            <a href="#" class="btn btn-success">Read more</a>
-                         </p>
+                    <div class="form-group">
+                        <label for="description" class="control-label col-md-3">Description: </label>
+                        <div class="col-md-9">
+                            <textarea  name="txtDescription" class="form-control"></textarea>
+                        </div>
                     </div>
-                </div>
-           </div>
-                <?php
-                    }
-                }
-           ?>
-           
-
-           </div>
+                    <div class="form-group">
+                        <label for="price" class="control-label col-md-3">Price: </label>
+                        <div class="col-md-9">
+                            <input type="text" name="txtPrice" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stock" class="control-label col-md-3">Stock: </label>
+                        <div class="col-md-9">
+                            <input type="text" name="txtStock" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pictuce" class="control-label col-md-3">Product picture: </label>
+                        <div class="col-md-9">
+                            <input type="file" name="filePic" class="form-control-file" accept="image/*">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                            <button type="submit"  class="btn btn-primary">Save</button>
+                            <button type="reset"  class="btn btn-danger">Reset</button>
+                        </div>
+                    </div>
+            </form>
+        </div>
     </div>
-    
-
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
